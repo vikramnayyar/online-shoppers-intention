@@ -1,0 +1,9 @@
+stages: 
+  load_data:
+    cmd: python src/prepare_data.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/prepare_data.py
+    - data_given/online_shoppers_intention.csv
+    outs:
+    - data/raw/raw_data.csv
