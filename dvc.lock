@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   load_data:
-    cmd: python src/prepare_data.py --config=params.yaml
+    cmd: python3 src/prepare_data.py --config=params.yaml
     deps:
     - path: data_given/online_shoppers_intention.csv
       md5: 5428f8d61fd65304b6ceb08a9bcefce2
@@ -10,9 +10,28 @@ stages:
       md5: 70ed25554be2d4ea3a9d699f8d9c2dc3
       size: 907
     - path: src/prepare_data.py
-      md5: 2af1d774fac81adfc94a8f5686bf66bd
-      size: 2918
+      md5: de7512bcc296e05ccadbbfa9707e40f9
+      size: 4712
     outs:
     - path: data/raw/raw_data.csv
-      md5: 8d36c87a32a5e508cc14fd88ef6c5795
-      size: 536610
+      md5: d0f4e52a2864953e05a09bbc6d319de1
+      size: 1079846
+  split_data:
+    cmd: python3 src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/raw_data.csv
+      md5: d0f4e52a2864953e05a09bbc6d319de1
+      size: 1079846
+    - path: src/get_data.py
+      md5: 70ed25554be2d4ea3a9d699f8d9c2dc3
+      size: 907
+    - path: src/split_data.py
+      md5: 77dc7876adc14f48cdc8c10fb5111391
+      size: 1240
+    outs:
+    - path: data/processed/test_data.csv
+      md5: 42a899b0084ff027b8d142919ae2b704
+      size: 216308
+    - path: data/processed/train_data.csv
+      md5: 329010d952961d47d2f4c12a36254fda
+      size: 857365
