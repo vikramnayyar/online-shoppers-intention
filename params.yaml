@@ -1,0 +1,5 @@
+datasource:
+  given: data_given/online_shoppers_intention.csv
+
+data:
+  raw_data: data/raw/raw_data.csv 
