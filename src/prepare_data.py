@@ -1,5 +1,5 @@
 """
-The script reads the analyzes and pre-processes the given data 
+The script reads, analyzes and pre-processes the given data 
 """
 import pandas as pd
 import numpy as np

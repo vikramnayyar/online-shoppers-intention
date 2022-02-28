@@ -17,3 +17,14 @@ stages:
     outs:
     - data/processed/train_data.csv
     - data/processed/test_data.csv
+
+  train_and_evaluate:
+    cmd: python3 src/split_data.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/train_and_evaluate.py
+    metrics:
+    - report/scores.json:
+        cache: false
+    outs:
+    - saved_models/best_model.joblib
