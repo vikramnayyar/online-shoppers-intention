@@ -1,0 +1,12 @@
+create dvc
+execute dvc: dvc repro 
+
+create tox.ini, "tests" directory
+run test using command: tox
+
+create setup.py
+run setup.py using command: tox
+alternatively, make .tar package of project using:
+
+mkdir -p .gtihub/worklows
+create ci-cd.yaml
