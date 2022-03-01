@@ -1,2 +1,4 @@
 dvc
 dvc[gdrive]
+pytest
+tox
