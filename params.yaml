@@ -14,3 +14,6 @@ split_data:
 
 reports:
   scores: report/scores.json
+
+estimators:
+  n_estimators: 100
