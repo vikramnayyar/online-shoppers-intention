@@ -8,5 +8,5 @@ create setup.py
 run setup.py using command: tox
 alternatively, make .tar package of project using:
 
-mkdir -p .gtihub/worklows
-create ci-cd.yaml
+mkdir -p .github/workflows
+create ci-cd.yaml using: touch .github/workflows/ci-cd.yaml

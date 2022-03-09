@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}
+OnlineShoppersIntention
+{% endblock title %}
+
+
+{% block custom_css %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock custom_css %}
+
+
+{% block body %}
+<!-- nav bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/">OnlineShoppersPrediction</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/c17hawke/dvc-plus-cml-test">source code</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <!-- nav bar ends -->
+
+    <div class="container-fluid masthead">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form method="POST">
+                        <!-- Input block-->
+                        <div class="form-group">
+                            <label for="translation">
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Enter the details as indicated:</p>
+                                </blockquote>
+                            </label>
+                            <textarea class="form-control" name="Administrative" rows="1"
+                                placeholder="Number of visits on administrative pages"></textarea>
+                            <textarea class="form-control" name="Administrative_Duration" rows="1"
+                                placeholder="Duration spent on administrative pages"></textarea>
+                            <textarea class="form-control" name="Informational" rows="1"
+                                placeholder="Number of visits in informational pages"></textarea>
+                            <textarea class="form-control" name="Informational_Duration" rows="1"
+                                placeholder="Duration spent on informational pages"></textarea>
+                            <textarea class="form-control" name="ProductRelated" rows="1" 
+                                placeholder="Number of visits in product related pages"></textarea>
+                            <textarea class="form-control" name="ProductRelated_Duration" rows="1"
+                                placeholder="Duration spent on product related pages"></textarea>
+                            <textarea class="form-control" name="BounceRates" rows="1"
+                                placeholder="Enter bounce rate"></textarea>
+                            <textarea class="form-control" name="ExitRates" rows="1" 
+                                placeholder="Enter exit rate"></textarea>
+                            <textarea class="form-control" name="PageValues" rows="1" 
+                                placeholder="Enter page value"></textarea>
+                            <textarea class="form-control" name="SpecialDay" rows="1" 
+                                placeholder="Enter special day score"></textarea>
+                            
+                            <textarea class="form-control" name="OperatingSystems" rows="1" 
+                                placeholder="Enter operating system"></textarea>
+                           
+                            <textarea class="form-control" name="Browser" rows="1" 
+                                placeholder="Enter Browser"></textarea>
+                            
+                            <textarea class="form-control" name="Region" rows="1" 
+                                placeholder="Enter Region"></textarea>
+                            <textarea class="form-control" name="TrafficType" rows="1" 
+                                placeholder="Enter traffic type"></textarea>
+
+                            
+                            <label for="VisitorType">Select Visitor Type:</label>
+                            <select id="VisitorType" name="VisitorType", placeholder="Visitor type", required="required">
+                                <option value="0">New Vistor</option>
+                                <option value="1">Other</option>
+                                <option value="2">Returning Visitor</option>
+                            </select>
+                            <br>
+                            <label for="Weekend">Is the day Weekend?:  </label>
+                            <select id="Month" name="Month", placeholder="Region", required="required">
+                                  <option value="0">Yes</option>
+                                  <option value="1">No</option>
+                            </select>
+                            <br>    
+                            <label for="Month">Select Month:  </label>
+                            <select id="Month" name="Month", placeholder="Region", required="required">
+                              <option value="0">January</option>
+                              <option value="1">February</option>
+                              <option value="2">March</option>
+                              <option value="3">April</option>
+                              <option value="4">May</option>
+                              <option value="5">June</option>
+                              <option value="6">July</option>
+                              <option value="7">August</option>
+                              <option value="8">September</option>
+                              <option value="9">Octuber</option>
+                              <option value="10">November</option>
+                              <option value="11">December</option>
+                            </select>
+                            
+                        </div>
+
+                        <!-- Select output language here. -->
+                        <div class="form-group">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
+                        </br>
+                    </form>
+                    <!-- Translated text returned by the Translate API is rendered here. -->
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label for="translation-result">
+
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Prediction:</p>
+                                </blockquote>
+
+                            </label>
+                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endblock body %}
+
+        {% block custom_js %}
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+        {% endblock custom_js %}

@@ -3,4 +3,6 @@
 sudo git push -u origin main
 
 
-Time 1.34.45
+Time day3: 1.05.20
+Time day3: 1.25.44
+Time 52.13
