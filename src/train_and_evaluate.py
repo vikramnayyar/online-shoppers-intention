@@ -130,14 +130,16 @@ def save_records(model_comparison):
 
 
 def save_model(best_model):
-    file = open('saved_models/model.pkl', 'wb')   # Open a file to store model
-    pickle.dump(best_model, file)   # dumping information to the file
-    file.close()    
+    # file = open('saved_models/model.pkl', 'wb')   # Open a file to store model
+    # pickle.dump(best_model, file)   # dumping information to the file
+    # file.close()    
     
-    # os.makedirs("saved_models", exist_ok=True)                    # creates dir, if not present
-    # model_path = os.path.join("saved_models", "best_model.joblib")     # store model location
+    os.makedirs("saved_models", exist_ok=True)                    # creates dir, if not present
+    model_path = os.path.join("saved_models", "best_model.joblib")     # store model location
+    print(model_path)
+    joblib.dump(best_model, model_path)
 
-    # joblib.dump(best_model, model_path)
+
 
 if __name__=="__main__":
     args = argparse.ArgumentParser()

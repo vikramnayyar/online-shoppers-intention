@@ -8,6 +8,7 @@ import pandas as pd
 import argparse
 import pickle 
 
+# params_file = config["reports"]["params"]
 
 def read_params(config_path):
     with open(config_path) as yaml_file:
