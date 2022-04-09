@@ -3,8 +3,6 @@ The script develops the user application. This application accepts user inputs a
 feeds them to the model. The resulting model predictions are displayed in the application.    
 """
 
-# from pyexpat import model
-# from webbrowser import BaseBrowser
 import pandas as pd
 import streamlit as st
 import pickle as pkl
@@ -12,9 +10,6 @@ import os
 
 
 df = pd.read_csv("data_given/online_shoppers_intention.csv")
-# df = pd.read_csv("data/raw/raw_data.csv")
-# df = pd.read_csv("data/processed/train_data.csv")
-
 st.title('Online Shoppers Intention Prediction')
 
 st.write("This app is based on 17 inputs that predict wheather an online visitor will shop or not? Using this app, a bank can identify specific customer segments; that will make deposits.")

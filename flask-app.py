@@ -24,9 +24,11 @@ def read_params(config_path):
 def predict(data):
     config = read_params(params_path)
     model_dir_path = config["app model dir"]
-    model = joblib.load(model_dir_path)
+    model = joblib.load(model_dir_path)     #--- problem is with model--- it required to fit
+
+    input_cols = [1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1 ]
     prediction = model.predict(data)
-    print(prediction)
+    # print(model)
     return prediction
 
 def api_response(request):
@@ -40,6 +42,7 @@ def index():
             if request.form:
                 data = (request.form).values()
                 data = [list(map(float, data))]     # creates 2-D list
+                
                 response = predict(data)
                 return render_template("index.html", response = response)
 
