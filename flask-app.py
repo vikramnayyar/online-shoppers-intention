@@ -26,13 +26,21 @@ def predict(data):
     model_dir_path = config["app model dir"]
     model = joblib.load(model_dir_path)     #--- problem is with model--- it required to fit
 
-    input_cols = [1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1 ]
     prediction = model.predict(data)
     # print(model)
-    return prediction
+    return prediction[0]
 
 def api_response(request):
-    pass
+    try:
+        # data = np.array([list(request.json.values())])  #------- Error here
+        # response = predict(data)
+        # response = {"response": response}
+        return request
+    
+    except Exception as e:
+        print(e)
+        error = {"error": "Something went wrong. Try Again!!"}
+        return error
 
 
 @app.route("/", methods=["GET","POST"])    # renders template
