@@ -129,15 +129,17 @@ def save_records(model_comparison):
             json.dump(scores, f, indent=4)
 
 
-def save_model(best_model):
-    file = open('saved_models/model.pkl', 'wb')   # Open a file to store model
-    pickle.dump(best_model, file)   # dumping information to the file
-    file.close()    
+# def save_model(best_model):
+#     # file = open('saved_models/model.pkl', 'wb')   # Open a file to store model
+#     # pickle.dump(best_model, file)   # dumping information to the file
+#     # file.close()    
     
-    # os.makedirs("saved_models", exist_ok=True)                    # creates dir, if not present
-    # model_path = os.path.join("saved_models", "best_model.joblib")     # store model location
+#     os.makedirs("saved_models", exist_ok=True)                    # creates dir, if not present
+#     model_path = os.path.join("saved_models", "best_model.joblib")     # store model location
+#     print(model_path)
+#     joblib.dump(best_model, model_path)
 
-    # joblib.dump(best_model, model_path)
+
 
 if __name__=="__main__":
     args = argparse.ArgumentParser()
@@ -146,10 +148,22 @@ if __name__=="__main__":
     config_path = parsed_args.config                            # extracts yaml file name in config_path
 
     train_data, train_labels, test_data, test_labels = read_train_test()
-    model_comparison = compare_models(train_data, train_labels, test_data, test_labels)
-    best_model = model_comparison.iloc[0][0]
 
-    save_model(best_model)
+    train_data.to_csv("data/processed/X_train.csv")
+    train_labels.to_csv("data/processed/Y_train.csv")
+    model_comparison = compare_models(train_data, train_labels, test_data, test_labels)
+    
+    # best_model = model_comparison.iloc[0][0]
+    best_model = RandomForestClassifier()
+
+    # Fitting and saving best model
+    best_model.fit(train_data, train_labels)
+    os.makedirs("saved_models", exist_ok=True)                    # creates dir, if not present
+    model_path = os.path.join("saved_models", "best_model.joblib")     # store model location
+    joblib.dump(best_model, model_path)
+
+
+    # save_model(best_model)
     save_records(model_comparison)
 
     print(best_model)

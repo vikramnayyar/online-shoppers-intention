@@ -17,3 +17,5 @@ reports:
 
 estimators:
   n_estimators: 100
+
+app model dir: prediction_service/model/best_model.joblib

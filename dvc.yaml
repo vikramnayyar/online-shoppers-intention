@@ -31,5 +31,7 @@ stages:
     outs:
     - saved_models/best_model.joblib
 
+  model_dir_path: prediction_service/model/best_model.py
+
 
  
